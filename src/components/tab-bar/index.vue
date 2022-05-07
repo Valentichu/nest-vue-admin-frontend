@@ -34,7 +34,7 @@
   import { useRouter } from 'vue-router';
   import type { RouteLocationNormalized } from 'vue-router';
   import { listenerRouteChange } from '@/utils/route-listener';
-  import { useAppStore, useTabBarStore } from '@/store';
+  import { useAppStore, useTabBarStore } from '@/stores';
   import type { TagProps } from '@/store/modules/tab-bar/types';
 
   const appStore = useAppStore();

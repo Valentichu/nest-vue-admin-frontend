@@ -169,7 +169,7 @@
   import { computed, ref, inject } from 'vue';
   import { Message } from '@arco-design/web-vue';
   import { useDark, useToggle } from '@vueuse/core';
-  import { useAppStore, useUserStore } from '@/store';
+  import { useAppStore, useUserStore } from '@/stores';
   import { LOCALE_OPTIONS } from '@/locale';
   import useLocale from '@/hooks/locale';
   import useUser from '@/hooks/user';

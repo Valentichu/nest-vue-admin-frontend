@@ -70,7 +70,7 @@
   import { ValidatedError } from '@arco-design/web-vue/es/form/interface';
   import { useI18n } from 'vue-i18n';
   import { useStorage } from '@vueuse/core';
-  import { useUserStore } from '@/store';
+  import { useUserStore } from '@/stores';
   import useLoading from '@/hooks/loading';
   import { LoginData } from '@/api/user';
 

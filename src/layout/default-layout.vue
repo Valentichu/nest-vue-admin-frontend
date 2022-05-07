@@ -47,7 +47,7 @@
 <script lang="ts" setup>
   import { ref, computed, watch, provide } from 'vue';
   import { useRouter, useRoute } from 'vue-router';
-  import { useAppStore, useUserStore } from '@/store';
+  import { useAppStore, useUserStore } from '@/stores';
   import NavBar from '@/components/navbar/index.vue';
   import Menu from '@/components/menu/index.vue';
   import Footer from '@/components/footer/index.vue';

@@ -2,7 +2,7 @@ import type { Router, LocationQueryRaw } from 'vue-router';
 import NProgress from 'nprogress'; // progress bar
 
 import usePermission from '@/hooks/permission';
-import { useUserStore } from '@/store';
+import { useUserStore } from '@/stores';
 import { isLogin } from '@/utils/auth';
 import appRoutes from '../routes';
 
