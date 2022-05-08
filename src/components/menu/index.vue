@@ -1,6 +1,5 @@
 <script lang="tsx">
   import { defineComponent, ref, h, compile, computed } from 'vue';
-  import { useI18n } from 'vue-i18n';
   import { useRouter, RouteRecordRaw, RouteRecordNormalized } from 'vue-router';
   import { useAppStore } from '@/stores';
   import usePermission from '@/hooks/permission';
@@ -9,7 +8,6 @@
   export default defineComponent({
     emit: ['collapse'],
     setup() {
-      const { t } = useI18n();
       const appStore = useAppStore();
       const permission = usePermission();
       const router = useRouter();
@@ -109,7 +107,7 @@
                   key={element?.name}
                   v-slots={{
                     icon,
-                    title: () => h(compile(t(element?.meta?.locale || ''))),
+                    title: () => h(compile(element?.meta?.name || '')),
                   }}
                 >
                   {travel(element?.children)}
@@ -120,7 +118,7 @@
                   v-slots={{ icon }}
                   onClick={() => goto(element)}
                 >
-                  {t(element?.meta?.locale || '')}
+                  {element?.meta?.name || ''}
                 </a-menu-item>
               );
               nodes.push(r as never);
@@ -150,15 +148,5 @@
 </script>
 
 <style lang="less" scoped>
-  :deep(.arco-menu-inner) {
-    .arco-menu-inline-header {
-      display: flex;
-      align-items: center;
-    }
-    .arco-icon {
-      &:not(.arco-icon-down) {
-        font-size: 18px;
-      }
-    }
-  }
+ 
 </style>

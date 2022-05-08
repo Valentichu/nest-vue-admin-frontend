@@ -6,10 +6,10 @@
       :body-style="{ padding: '17px 20px 21px 20px' }"
     >
       <template #title>
-        {{ $t('workplace.popularContent') }}
+        查看
       </template>
       <template #extra>
-        <a-link>{{ $t('workplace.viewMore') }}</a-link>
+        <a-link>查看</a-link>
       </template>
       <a-space direction="vertical" :size="10" fill>
         <a-radio-group
@@ -18,13 +18,13 @@
           @change="typeChange"
         >
           <a-radio value="text">
-            {{ $t('workplace.popularContent.text') }}
+            查看
           </a-radio>
           <a-radio value="image">
-            {{ $t('workplace.popularContent.image') }}
+            查看
           </a-radio>
           <a-radio value="video">
-            {{ $t('workplace.popularContent.video') }}
+            查看
           </a-radio>
         </a-radio-group>
         <a-table
@@ -100,12 +100,6 @@
 <style scoped lang="less">
   .general-card {
     min-height: 388px;
-  }
-  :deep(.arco-table-tr) {
-    height: 44px;
-    .arco-typography {
-      margin-bottom: 0;
-    }
   }
   .increases-cell {
     display: flex;

@@ -1,0 +1,9 @@
+{
+  "navbar": true,
+  "menu": true,
+  "hideMenu": false,
+  "menuCollapse": false,
+  "footer": true,
+  "menuWidth": 220,
+  "tabBar": true
+}

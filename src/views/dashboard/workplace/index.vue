@@ -108,11 +108,7 @@
       }
       &:hover {
         .icon {
-          color: rgb(var(--arcoblue-6));
           background-color: #e8f3ff;
-        }
-        .text {
-          color: rgb(var(--arcoblue-6));
         }
       }
     }

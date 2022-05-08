@@ -12,7 +12,7 @@
           />
         </a-avatar>
         <a-statistic
-          :title="$t('workplace.onlineContent')"
+          title="查看"
           :value="373.5"
           :precision="1"
           :value-from="0"
@@ -20,7 +20,7 @@
           show-group-separator
         >
           <template #suffix>
-            W+ <span class="unit">{{ $t('workplace.pecs') }}</span>
+            W+ <span class="unit">查看</span>
           </template>
         </a-statistic>
       </a-space>
@@ -37,14 +37,14 @@
           />
         </a-avatar>
         <a-statistic
-          :title="$t('workplace.putIn')"
+          title="查看"
           :value="368"
           :value-from="0"
           animation
           show-group-separator
         >
           <template #suffix>
-            <span class="unit">{{ $t('workplace.pecs') }}</span>
+            <span class="unit">查看</span>
           </template>
         </a-statistic>
       </a-space>
@@ -61,14 +61,14 @@
           />
         </a-avatar>
         <a-statistic
-          :title="$t('workplace.newDay')"
+          title="查看"
           :value="8874"
           :value-from="0"
           animation
           show-group-separator
         >
           <template #suffix>
-            <span class="unit">{{ $t('workplace.pecs') }}</span>
+            <span class="unit">查看</span>
           </template>
         </a-statistic>
       </a-space>
@@ -86,7 +86,7 @@
           />
         </a-avatar>
         <a-statistic
-          :title="$t('workplace.newFromYesterday')"
+          title="查看"
           :value="2.8"
           :precision="1"
           :value-from="0"
@@ -105,10 +105,6 @@
 <script lang="ts" setup></script>
 
 <style lang="less" scoped>
-  .arco-grid.panel {
-    margin-bottom: 0;
-    padding: 16px 20px 0 20px;
-  }
   .panel-col {
     padding-left: 43px;
     border-right: 1px solid rgb(var(--gray-2));

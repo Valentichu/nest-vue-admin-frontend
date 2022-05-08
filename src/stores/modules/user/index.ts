@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 import {
   login as userLogin,
-  logout as userLogout,
   getUserInfo,
   LoginData,
 } from '@/api/user';
@@ -12,21 +11,13 @@ import { UserState } from './types';
 const useUserStore = defineStore('user', {
   state: (): UserState => ({
     name: undefined,
-    avatar: undefined,
-    job: undefined,
-    organization: undefined,
-    location: undefined,
-    email: undefined,
-    introduction: undefined,
-    personalWebsite: undefined,
-    jobName: undefined,
-    organizationName: undefined,
-    locationName: undefined,
     phone: undefined,
-    registrationDate: undefined,
-    accountId: undefined,
-    certification: undefined,
-    role: '',
+    remark: undefined,
+    roleId: undefined,
+    roleName: undefined,
+    departmentId: undefined,
+    departmentName: undefined,
+    permissions: undefined
   }),
 
   getters: {
@@ -36,12 +27,12 @@ const useUserStore = defineStore('user', {
   },
 
   actions: {
-    switchRoles() {
-      return new Promise((resolve) => {
-        this.role = this.role === 'user' ? 'admin' : 'user';
-        resolve(this.role);
-      });
-    },
+    // switchRoles() {
+    //   return new Promise((resolve) => {
+    //     this.role = this.role === 'user' ? 'admin' : 'user';
+    //     resolve(this.role);
+    //   });
+    // },
     // Set user's information
     setInfo(partial: Partial<UserState>) {
       this.$patch(partial);
@@ -72,8 +63,7 @@ const useUserStore = defineStore('user', {
 
     // Logout
     async logout() {
-      await userLogout();
-
+      // await userLogout();
       this.resetInfo();
       clearToken();
       removeRouteListener();

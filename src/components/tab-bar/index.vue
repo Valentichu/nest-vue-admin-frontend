@@ -7,15 +7,13 @@
             <span
               v-for="(tag, index) in tagList"
               :key="tag.fullPath"
-              class="arco-tag arco-tag-size-medium arco-tag-checked"
               :class="{ 'link-actived': tag.fullPath === $route.fullPath }"
               @click="goto(tag)"
             >
               <span class="tag-link">
-                {{ $t(tag.title) }}
+                {{ tag.title }}
               </span>
               <span
-                class="arco-icon-hover arco-tag-icon-hover arco-icon-hover-size-medium arco-tag-close-btn"
                 @click.stop="tagClose(tag, index)"
               >
                 <icon-close />
@@ -35,7 +33,7 @@
   import type { RouteLocationNormalized } from 'vue-router';
   import { listenerRouteChange } from '@/utils/route-listener';
   import { useAppStore, useTabBarStore } from '@/stores';
-  import type { TagProps } from '@/store/modules/tab-bar/types';
+  import type { TagProps } from '@/stores/modules/tab-bar/types';
 
   const appStore = useAppStore();
   const tabBarStore = useTabBarStore();
@@ -93,16 +91,6 @@
           height: 42px;
           white-space: nowrap;
           overflow-x: auto;
-
-          :deep(.arco-tag) {
-            margin-right: 6px;
-            cursor: pointer;
-            &:first-child {
-              .arco-tag-close-btn {
-                display: none;
-              }
-            }
-          }
         }
       }
     }
@@ -122,13 +110,5 @@
     .tag-link {
       color: rgb(var(--link-6));
     }
-    & + .arco-tag-close-btn {
-      color: rgb(var(--link-6));
-    }
-  }
-  :deep(.arco-affix) {
-    z-index: 90;
-    background-color: var(--color-bg-2);
-    overflow-x: auto;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <a-card
     class="general-card"
-    :title="$t('workplace.recently.visited')"
+    title="查看"
     :header-style="{ paddingBottom: '0' }"
     :body-style="{ paddingTop: '26px' }"
   >
@@ -12,7 +12,7 @@
             <component :is="link.icon" />
           </div>
           <a-typography-paragraph class="text">
-            {{ $t(link.text) }}
+            查看
           </a-typography-paragraph>
         </a-col>
       </a-row>

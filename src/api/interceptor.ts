@@ -6,7 +6,6 @@ import { useUserStore } from '@/stores';
 import { getToken } from '@/utils/auth';
 
 export interface HttpResponse<T = unknown> {
-  status: number;
   msg: string;
   code: number;
   data: T;
@@ -69,7 +68,7 @@ axios.interceptors.response.use(
   },
   (error) => {
     message.error({
-      content: error.msg || 'Request Error',
+      content: error.msg || '网络异常，请联系管理员',
       duration: 5 * 1000,
     });
     return Promise.reject(error);

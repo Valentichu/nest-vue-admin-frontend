@@ -16,7 +16,7 @@ export default function setupPermissionGuard(router: Router) {
       else {
         const destination = Permission.findFirstPermissionRoute(
           appRoutes,
-          userStore.role
+          userStore.permissions
         ) || {
           name: 'notFound',
         };
@@ -25,7 +25,7 @@ export default function setupPermissionGuard(router: Router) {
       NProgress.done();
     }
     if (isLogin()) {
-      if (userStore.role) {
+      if (userStore.permissions) {
         crossroads();
       } else {
         try {

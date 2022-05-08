@@ -1,33 +1,33 @@
 <template>
   <a-card
     class="general-card"
-    :title="$t('workplace.docs')"
+    title="文档"
     :header-style="{ paddingBottom: 0 }"
     :body-style="{ paddingTop: 0 }"
     style="height: 160px"
   >
     <template #extra>
-      <a-link>{{ $t('workplace.viewMore') }}</a-link>
+      <a-link>查看更多</a-link>
     </template>
     <a-row>
       <a-col :span="12">
         <a-link>
-          {{ $t('workplace.docs.productOverview') }}
+          查看
         </a-link>
       </a-col>
       <a-col :span="12">
         <a-link>
-          {{ $t('workplace.docs.userGuide') }}
+          查看
         </a-link>
       </a-col>
       <a-col :span="12">
         <a-link>
-          {{ $t('workplace.docs.workflow') }}
+          查看
         </a-link>
       </a-col>
       <a-col :span="12">
         <a-link>
-          {{ $t('workplace.docs.interfaceDocs') }}
+          查看
         </a-link>
       </a-col>
     </a-row>
@@ -35,8 +35,4 @@
 </template>
 
 <style lang="less" scoped>
-  .arco-card-body .arco-link {
-    margin: 10px 0;
-    color: rgb(var(--gray-8));
-  }
 </style>

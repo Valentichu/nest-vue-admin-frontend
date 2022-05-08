@@ -18,7 +18,7 @@
           @collapse="setCollapsed"
         >
           <div class="menu-wrapper">
-            <Menu />
+            <Menu></Menu>
           </div>
         </a-layout-sider>
         <a-drawer
@@ -30,14 +30,14 @@
           :closable="false"
           @cancel="drawerCancel"
         >
-          <Menu />
+          <Menu></Menu>
         </a-drawer>
         <a-layout class="layout-content" :style="paddingStyle">
           <TabBar v-if="appStore.tabBar" />
           <a-layout-content>
             <PageLayout />
           </a-layout-content>
-          <Footer v-if="footer" />
+          <Footer v-if="footer"></Footer>
         </a-layout>
       </a-layout>
     </a-layout>
@@ -53,7 +53,6 @@
   import Footer from '@/components/footer/index.vue';
   import TabBar from '@/components/tab-bar/index.vue';
   import usePermission from '@/hooks/permission';
-  import useResponsive from '@/hooks/responsive';
   import PageLayout from './page-layout.vue';
 
   const appStore = useAppStore();
@@ -61,7 +60,6 @@
   const router = useRouter();
   const route = useRoute();
   const permission = usePermission();
-  useResponsive(true);
   const navbarHeight = `60px`;
   const navbar = computed(() => appStore.navbar);
   const renderMenu = computed(() => appStore.menu);
@@ -85,7 +83,7 @@
     appStore.updateSettings({ menuCollapse: val });
   };
   watch(
-    () => userStore.role,
+    () => userStore.permissions,
     (roleValue) => {
       if (roleValue && !permission.accessRouter(route))
         router.push({ name: 'notFound' });
@@ -135,33 +133,12 @@
       background-color: var(--color-border);
       content: '';
     }
-
-    > :deep(.arco-layout-sider-children) {
-      overflow-y: hidden;
-    }
   }
 
   .menu-wrapper {
     height: 100%;
     overflow: auto;
     overflow-x: hidden;
-    :deep(.arco-menu) {
-      ::-webkit-scrollbar {
-        width: 12px;
-        height: 4px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        border: 4px solid transparent;
-        background-clip: padding-box;
-        border-radius: 7px;
-        background-color: var(--color-text-4);
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background-color: var(--color-text-3);
-      }
-    }
   }
 
   .layout-content {
