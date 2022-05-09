@@ -3,8 +3,8 @@ export default {
   name: 'dashboard',
   component: () => import('@/views/dashboard/index.vue'),
   meta: {
-    locale: 'menu.dashboard',
-    requiresAuth: true,
+    name: '首页',
+    requiresAuth: false,
     icon: 'icon-dashboard',
     order: 0,
   },
@@ -14,9 +14,9 @@ export default {
       name: 'Workplace',
       component: () => import('@/views/dashboard/workplace/index.vue'),
       meta: {
-        locale: 'menu.dashboard.workplace',
-        requiresAuth: true,
-        roles: ['*'],
+        name: '首页',
+        requiresAuth: false,
+        pemissions: ['*'],
       },
     },
   ],

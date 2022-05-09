@@ -36,7 +36,7 @@
           if (!_routes) return null;
           const collector: any = _routes.map((element) => {
             // no access
-            if (!permission.accessRouter(element)) {
+            if (!permission.accessRoute(element)) {
               return null;
             }
 

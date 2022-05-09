@@ -12,14 +12,9 @@ export default function setupPermissionGuard(router: Router) {
     const userStore = useUserStore();
     async function crossroads() {
       const Permission = usePermission();
-      if (Permission.accessRouter(to)) next();
+      if (Permission.accessRoute(to) && !['/', '/login'].includes(to.path)) next();
       else {
-        const destination = Permission.findFirstPermissionRoute(
-          appRoutes,
-          userStore.permissions
-        ) || {
-          name: 'notFound',
-        };
+        const destination = Permission.findFirstPermissionRoute(appRoutes) || { name: 'notFound' };
         next(destination);
       }
       NProgress.done();

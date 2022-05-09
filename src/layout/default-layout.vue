@@ -85,7 +85,7 @@
   watch(
     () => userStore.permissions,
     (roleValue) => {
-      if (roleValue && !permission.accessRouter(route))
+      if (roleValue && !permission.accessRoute(route))
         router.push({ name: 'notFound' });
     }
   );

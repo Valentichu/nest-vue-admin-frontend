@@ -5,7 +5,7 @@ import _ from 'lodash'
 export default function usePermission() {
   const userStore = useUserStore();
   return {
-    accessRouter(route: RouteLocationNormalized | RouteRecordRaw) {
+    accessRoute(route: RouteLocationNormalized | RouteRecordRaw) {
       return (
         !route.meta?.requiresAuth ||
         !route.meta?.permissions ||
@@ -13,15 +13,11 @@ export default function usePermission() {
         _.intersection(route.meta?.permissions, userStore.permissions).length > 0
       );
     },
-    findFirstPermissionRoute(_routers: any, permissions: string[] = []) {
+    findFirstPermissionRoute(_routers: any) {
       const cloneRouters = [..._routers];
       while (cloneRouters.length) {
         const firstElement = cloneRouters.shift();
-        if (
-          firstElement?.meta?.permissions?.find((el: string) => {
-            return el.includes('*') || permissions.includes(el)
-          })
-        )
+        if (this.accessRoute(firstElement))
           return { name: firstElement.name };
         if (firstElement?.children) {
           cloneRouters.push(...firstElement.children);

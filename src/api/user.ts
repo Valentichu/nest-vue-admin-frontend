@@ -15,5 +15,5 @@ export function login(data: LoginData) {
 }
 
 export function getUserInfo() {
-  return axios.post<UserState>('/auth/info');
+  return axios.get<UserState>('/auth/info');
 }
