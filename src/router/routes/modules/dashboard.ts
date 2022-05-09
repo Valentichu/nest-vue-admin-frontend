@@ -4,8 +4,8 @@ export default {
   component: () => import("@/views/dashboard/index.vue"),
   meta: {
     name: "首页",
-    requiresAuth: false,
-    icon: "icon-dashboard",
+    requiresAuth: true,
+    icon: "area-chart-outlined",
     order: 0,
   },
   children: [
@@ -15,7 +15,7 @@ export default {
       component: () => import("@/views/dashboard/workplace/index.vue"),
       meta: {
         name: "首页",
-        requiresAuth: false,
+        requiresAuth: true,
         pemissions: ["*"],
       },
     },

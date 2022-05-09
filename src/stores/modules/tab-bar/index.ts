@@ -5,7 +5,7 @@ import { TabBarState, TagProps } from "./types";
 const formatTag = (route: RouteLocationNormalized): TagProps => {
   const { name, meta, fullPath, query } = route;
   return {
-    title: meta.locale || "",
+    title: meta.name || "",
     name: String(name),
     fullPath,
     query,
@@ -18,7 +18,7 @@ const useAppStore = defineStore("tabBar", {
     tagList: [
       // Set the first element dynamically as needed
       {
-        title: "menu.dashboard.workplace",
+        title: "首页",
         name: "Workplace",
         fullPath: "/dashboard/workplace",
       },

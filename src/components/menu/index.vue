@@ -1,25 +1,14 @@
 <script lang="tsx">
 import { defineComponent, ref, h, compile, computed } from "vue";
 import { useRouter, RouteRecordRaw, RouteRecordNormalized } from "vue-router";
-import { useAppStore } from "@/stores";
 import usePermission from "@/hooks/permission";
 import { listenerRouteChange } from "@/utils/route-listener";
 
 export default defineComponent({
   emit: ["collapse"],
   setup() {
-    const appStore = useAppStore();
     const permission = usePermission();
     const router = useRouter();
-    const collapsed = computed({
-      get() {
-        if (appStore.device === "desktop") return appStore.menuCollapse;
-        return false;
-      },
-      set(value: boolean) {
-        appStore.updateSettings({ menuCollapse: value });
-      },
-    });
     const appRoute = computed(() => {
       return router
         .getRoutes()
@@ -87,11 +76,6 @@ export default defineComponent({
         selectedKey.value = [key];
       }
     }, true);
-    const setCollapse = (val: boolean) => {
-      if (appStore.device === "desktop")
-        appStore.updateSettings({ menuCollapse: val });
-    };
-
     const renderSubMenu = () => {
       function travel(_route: RouteRecordRaw[], nodes = []) {
         if (_route) {
@@ -129,14 +113,9 @@ export default defineComponent({
 
     return () => (
       <a-menu
-        v-model:collapsed={collapsed.value}
-        show-collapse-button={appStore.device !== "mobile"}
-        auto-open={false}
         selected-keys={selectedKey.value}
-        auto-open-selected={true}
-        level-indent={34}
-        style="height: 100%"
-        onCollapse={setCollapse}
+        mode="inline"
+        style="border-right: 0px"
       >
         {renderSubMenu()}
       </a-menu>

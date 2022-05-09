@@ -3,6 +3,7 @@ import router from "./router";
 import store from "./stores";
 import directive from "./directive";
 import App from "./App.vue";
+import { AreaChartOutlined } from '@ant-design/icons-vue';
 
 import "@/assets/style/global.less";
 import "ant-design-vue/es/message/style/css";
@@ -14,5 +15,6 @@ const app = createApp(App);
 app.use(router);
 app.use(store);
 app.use(directive);
+app.component('AreaChartOutlined', AreaChartOutlined);
 
 app.mount("#app");

@@ -14,7 +14,7 @@
                 {{ tag.title }}
               </span>
               <span @click.stop="tagClose(tag, index)">
-                <icon-close />
+                <close-outlined />
               </span>
             </span>
           </div>

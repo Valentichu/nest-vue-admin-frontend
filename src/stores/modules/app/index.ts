@@ -17,9 +17,6 @@ const useAppStore = defineStore("app", {
       // @ts-ignore-next-line
       this.$patch(partial);
     },
-    toggleMenu(value: boolean) {
-      this.hideMenu = value;
-    },
   },
 });
 

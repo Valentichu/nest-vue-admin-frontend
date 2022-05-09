@@ -1,9 +1,9 @@
 {
   "navbar": true,
   "menu": true,
-  "hideMenu": false,
   "menuCollapse": false,
   "footer": true,
+  "navbarHeight": 60,
   "menuWidth": 220,
   "tabBar": true
 }
