@@ -6,6 +6,7 @@ import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
 
 export default function configAntResolverPlugin() {
   const antResolverPlugin = Components({
+    dirs: [],
     resolvers: [
       AntDesignVueResolver({
         resolveIcons: true,

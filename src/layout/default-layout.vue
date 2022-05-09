@@ -1,46 +1,26 @@
 <template>
-  <a-layout class="layout" :class="{ mobile: appStore.hideMenu }">
-    <div v-if="navbar" class="layout-navbar">
-      <NavBar />
-    </div>
+  <a-layout class="layout">
+    <a-layout-header v-if="navbar" class="layout-navbar">
+      <Navbar />
+    </a-layout-header>
+
     <a-layout>
-      <a-layout>
-        <a-layout-sider
-          v-if="renderMenu"
-          v-show="!hideMenu"
-          class="layout-sider"
-          breakpoint="xl"
-          :collapsed="collapsed"
-          :collapsible="true"
-          :width="menuWidth"
-          :style="{ paddingTop: navbar ? '60px' : '' }"
-          :hide-trigger="true"
-          @collapse="setCollapsed"
-        >
-          <div class="menu-wrapper">
-            <Menu></Menu>
-          </div>
-        </a-layout-sider>
-        <a-drawer
-          v-if="hideMenu"
-          :visible="drawerVisible"
-          placement="left"
-          :footer="false"
-          mask-closable
-          :closable="false"
-          @cancel="drawerCancel"
-        >
+      <a-layout-sider v-if="renderMenu" v-show="!hideMenu" class="layout-sider" :collapsed="collapsed"
+        :collapsible="true" :width="menuWidth" :style="{ paddingTop: navbar ? '60px' : '' }" :hide-trigger="true"
+        @collapse="setCollapsed">
+        <div class="menu-wrapper">
           <Menu></Menu>
-        </a-drawer>
-        <a-layout class="layout-content" :style="paddingStyle">
-          <TabBar v-if="appStore.tabBar" />
-          <a-layout-content>
-            <PageLayout />
-          </a-layout-content>
-          <Footer v-if="footer"></Footer>
-        </a-layout>
-      </a-layout>
+        </div>
+      </a-layout-sider>
+      <a-layout-content class="layout-content" :style="paddingStyle">
+        <TabBar v-if="appStore.tabBar" />
+        <PageLayout />
+      </a-layout-content>
     </a-layout>
+
+    <a-layout-footer v-if="footer">
+      <Footer></Footer>
+    </a-layout-footer>
   </a-layout>
 </template>
 
@@ -48,12 +28,12 @@
 import { ref, computed, watch, provide } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useAppStore, useUserStore } from "@/stores";
-import NavBar from "@/components/navbar/index.vue";
+import usePermission from "@/hooks/permission";
+import PageLayout from "./page-layout.vue";
+import Navbar from "@/components/navbar/index.vue";
 import Menu from "@/components/menu/index.vue";
 import Footer from "@/components/footer/index.vue";
 import TabBar from "@/components/tab-bar/index.vue";
-import usePermission from "@/hooks/permission";
-import PageLayout from "./page-layout.vue";
 
 const appStore = useAppStore();
 const userStore = useUserStore();
@@ -113,6 +93,7 @@ provide("toggleDrawerMenu", () => {
   left: 0;
   z-index: 100;
   width: 100%;
+  padding: 0;
   height: @nav-size-height;
 }
 
@@ -144,7 +125,6 @@ provide("toggleDrawerMenu", () => {
 .layout-content {
   min-height: 100vh;
   overflow-y: hidden;
-  background-color: var(--color-fill-2);
   transition: padding 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
 }
 </style>
