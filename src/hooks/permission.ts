@@ -13,14 +13,17 @@ export default function usePermission() {
         _.intersection(route.meta?.permissions, userStore.permissions).length > 0
       );
     },
-    findFirstPermissionRoute(_routers: any) {
+    findFirstPermissionRoute(_routers: any): any {
       const cloneRouters = [..._routers];
       while (cloneRouters.length) {
         const firstElement = cloneRouters.shift();
-        if (this.accessRoute(firstElement))
-          return { name: firstElement.name };
-        if (firstElement?.children) {
-          cloneRouters.push(...firstElement.children);
+        if (this.accessRoute(firstElement)) {
+          if (!firstElement?.children) {
+            return { name: firstElement.name };
+          }
+          if (this.findFirstPermissionRoute(firstElement.children)) {
+            return this.findFirstPermissionRoute(firstElement.children)
+          }
         }
       }
       return null;

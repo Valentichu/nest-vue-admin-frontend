@@ -2,40 +2,21 @@
   <div class="navbar">
     <div class="left-side">
       <a-space>
-        <img
-          alt="logo"
-          src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
-        />
         <a-typography-title
           :style="{ margin: 0, fontSize: '18px' }"
           :heading="5"
         >
-          Ant Design
+          Nest Vue Admin
         </a-typography-title>
       </a-space>
     </div>
     <ul class="right-side">
-      <!-- <li>
-        <a-tooltip content="标题">
-          <a-button
-            class="nav-btn"
-            type="outline"
-            :shape="'circle'"
-            @click="setVisible"
-          >
-            <template #icon>
-              <icon-settings />
-            </template>
-          </a-button>
-        </a-tooltip>
-      </li> -->
       <li>
         <a-dropdown trigger="click">
           <a-avatar
             :size="32"
             :style="{ marginRight: '8px', cursor: 'pointer' }"
           >
-            <img alt="avatar" :src="avatar" />
           </a-avatar>
           <template #content>
             <!-- <a-doption>
@@ -96,8 +77,8 @@
     display: flex;
     justify-content: space-between;
     height: 100%;
-    background-color: var(--color-bg-2);
-    border-bottom: 1px solid var(--color-border);
+    background-color: white;
+    border-bottom: 1px solid rgb(229, 230, 235);
   }
 
   .left-side {

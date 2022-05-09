@@ -1,5 +1,5 @@
 <template>
-  <a-layout-footer class="footer">Nest Admin</a-layout-footer>
+  <a-layout-footer class="footer">Nest Vue Admin</a-layout-footer>
 </template>
 
 <script lang="ts" setup></script>
@@ -10,7 +10,6 @@
     align-items: center;
     justify-content: center;
     height: 40px;
-    color: var(--color-text-2);
     text-align: center;
   }
 </style>
