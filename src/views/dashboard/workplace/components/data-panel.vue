@@ -19,9 +19,7 @@
           animation
           show-group-separator
         >
-          <template #suffix>
-            W+ <span class="unit">查看</span>
-          </template>
+          <template #suffix> W+ <span class="unit">查看</span> </template>
         </a-statistic>
       </a-space>
     </a-grid-item>
@@ -105,23 +103,23 @@
 <script lang="ts" setup></script>
 
 <style lang="less" scoped>
-  .panel-col {
-    padding-left: 43px;
-    border-right: 1px solid rgb(var(--gray-2));
-  }
-  .col-avatar {
-    margin-right: 12px;
-    background-color: var(--color-fill-2);
-  }
-  .up-icon {
-    color: rgb(var(--red-6));
-  }
-  .unit {
-    margin-left: 8px;
-    color: rgb(var(--gray-8));
-    font-size: 12px;
-  }
-  :deep(.panel-border) {
-    margin: 4px 0 0 0;
-  }
+.panel-col {
+  padding-left: 43px;
+  border-right: 1px solid rgb(var(--gray-2));
+}
+.col-avatar {
+  margin-right: 12px;
+  background-color: var(--color-fill-2);
+}
+.up-icon {
+  color: rgb(var(--red-6));
+}
+.unit {
+  margin-left: 8px;
+  color: rgb(var(--gray-8));
+  font-size: 12px;
+}
+:deep(.panel-border) {
+  margin: 4px 0 0 0;
+}
 </style>

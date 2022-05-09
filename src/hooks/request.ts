@@ -1,7 +1,7 @@
-import { ref, UnwrapRef } from 'vue';
-import { AxiosResponse } from 'axios';
-import { HttpResponse } from '@/api/interceptor';
-import useLoading from './loading';
+import { ref, UnwrapRef } from "vue";
+import { AxiosResponse } from "axios";
+import { HttpResponse } from "@/api/interceptor";
+import useLoading from "./loading";
 
 // use to fetch list
 // Don't use async function. It doesn't work in async function.

@@ -1,14 +1,10 @@
-import { defineStore } from 'pinia';
-import {
-  login as userLogin,
-  getUserInfo,
-  LoginData,
-} from '@/api/user';
-import { setToken, clearToken } from '@/utils/auth';
-import { removeRouteListener } from '@/utils/route-listener';
-import { UserState } from './types';
+import { defineStore } from "pinia";
+import { login as userLogin, getUserInfo, LoginData } from "@/api/user";
+import { setToken, clearToken } from "@/utils/auth";
+import { removeRouteListener } from "@/utils/route-listener";
+import { UserState } from "./types";
 
-const useUserStore = defineStore('user', {
+const useUserStore = defineStore("user", {
   state: (): UserState => ({
     name: undefined,
     phone: undefined,
@@ -17,7 +13,7 @@ const useUserStore = defineStore('user', {
     roleName: undefined,
     departmentId: undefined,
     departmentName: undefined,
-    permissions: undefined
+    permissions: undefined,
   }),
 
   getters: {

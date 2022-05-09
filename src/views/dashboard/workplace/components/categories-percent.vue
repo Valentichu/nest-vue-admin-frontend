@@ -7,17 +7,15 @@
         padding: '20px',
       }"
     >
-      <template #title>
-        查看
-      </template>
+      <template #title> 查看 </template>
     </a-card>
   </a-spin>
 </template>
 
 <script lang="ts" setup>
-  import useLoading from '@/hooks/loading';
+import useLoading from "@/hooks/loading";
 
-  const { loading } = useLoading();
+const { loading } = useLoading();
 </script>
 
 <style scoped lang="less"></style>

@@ -2,9 +2,19 @@
   <div class="login-form-wrapper">
     <div class="login-form-title">Nest Vue Admin</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
-    <a-form ref="loginForm" :model="userInfo" name="normal_login" class="login-form" layout="vertical"
-      @finish="onFinish">
-      <a-form-item label="用户名" name="username" :rules="[{ required: true, message: '请输入用户名' }]">
+    <a-form
+      ref="loginForm"
+      :model="userInfo"
+      name="normal_login"
+      class="login-form"
+      layout="vertical"
+      @finish="onFinish"
+    >
+      <a-form-item
+        label="用户名"
+        name="username"
+        :rules="[{ required: true, message: '请输入用户名' }]"
+      >
         <a-input v-model:value="userInfo.username">
           <template #prefix>
             <user-outlined />
@@ -12,7 +22,11 @@
         </a-input>
       </a-form-item>
 
-      <a-form-item label="密码" name="password" :rules="[{ required: true, message: '请输入密码' }]">
+      <a-form-item
+        label="密码"
+        name="password"
+        :rules="[{ required: true, message: '请输入密码' }]"
+      >
         <a-input-password v-model:value="userInfo.password" allow-clear>
           <template #prefix>
             <lock-outlined />
@@ -21,7 +35,10 @@
       </a-form-item>
       <a-space :size="16" direction="vertical">
         <div class="login-form-password-actions">
-          <a-checkbox :checked="loginConfig.rememberPassword" @change="setRememberPassword">
+          <a-checkbox
+            :checked="loginConfig.rememberPassword"
+            @change="setRememberPassword"
+          >
             记住密码
           </a-checkbox>
         </div>
@@ -34,23 +51,23 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
-import { useRouter } from 'vue-router';
-import { message } from 'ant-design-vue';
-import { useStorage } from '@vueuse/core';
-import { useUserStore } from '@/stores';
-import useLoading from '@/hooks/loading';
-import { LoginData } from '@/api/user';
+import { ref, reactive } from "vue";
+import { useRouter } from "vue-router";
+import { message } from "ant-design-vue";
+import { useStorage } from "@vueuse/core";
+import { useUserStore } from "@/stores";
+import useLoading from "@/hooks/loading";
+import { LoginData } from "@/api/user";
 
 const router = useRouter();
-const errorMessage = ref('');
+const errorMessage = ref("");
 const { loading, setLoading } = useLoading();
 const userStore = useUserStore();
 
-const loginConfig = useStorage('login-config', {
+const loginConfig = useStorage("login-config", {
   rememberPassword: true,
-  username: '', // 演示默认值
-  password: '', // demo default value
+  username: "", // 演示默认值
+  password: "", // demo default value
 });
 const userInfo = reactive({
   username: loginConfig.value.username,
@@ -63,18 +80,18 @@ const onFinish = async (values: LoginData) => {
     await userStore.login(values);
     const { redirect, ...othersQuery } = router.currentRoute.value.query;
     router.push({
-      name: (redirect as string) || 'Workplace',
+      name: (redirect as string) || "Workplace",
       query: {
         ...othersQuery,
       },
     });
-    message.success('登录成功');
+    message.success("登录成功");
     const { rememberPassword } = loginConfig.value;
     const { username, password } = values;
     // 实际生产环境需要进行加密存储。
     // The actual production environment requires encrypted storage.
-    loginConfig.value.username = rememberPassword ? username : '';
-    loginConfig.value.password = rememberPassword ? password : '';
+    loginConfig.value.username = rememberPassword ? username : "";
+    loginConfig.value.password = rememberPassword ? password : "";
   } catch (err) {
     errorMessage.value = (err as Error).message;
   } finally {

@@ -11,28 +11,19 @@
     </template>
     <a-row>
       <a-col :span="12">
-        <a-link>
-          查看
-        </a-link>
+        <a-link> 查看 </a-link>
       </a-col>
       <a-col :span="12">
-        <a-link>
-          查看
-        </a-link>
+        <a-link> 查看 </a-link>
       </a-col>
       <a-col :span="12">
-        <a-link>
-          查看
-        </a-link>
+        <a-link> 查看 </a-link>
       </a-col>
       <a-col :span="12">
-        <a-link>
-          查看
-        </a-link>
+        <a-link> 查看 </a-link>
       </a-col>
     </a-row>
   </a-card>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>

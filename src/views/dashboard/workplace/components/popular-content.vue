@@ -5,9 +5,7 @@
       :header-style="{ paddingBottom: '0' }"
       :body-style="{ padding: '17px 20px 21px 20px' }"
     >
-      <template #title>
-        查看
-      </template>
+      <template #title> 查看 </template>
       <template #extra>
         <a-link>查看</a-link>
       </template>
@@ -17,15 +15,9 @@
           type="button"
           @change="typeChange"
         >
-          <a-radio value="text">
-            查看
-          </a-radio>
-          <a-radio value="image">
-            查看
-          </a-radio>
-          <a-radio value="video">
-            查看
-          </a-radio>
+          <a-radio value="text"> 查看 </a-radio>
+          <a-radio value="image"> 查看 </a-radio>
+          <a-radio value="video"> 查看 </a-radio>
         </a-radio-group>
         <a-table
           :data="renderList"
@@ -73,39 +65,39 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue';
-  import useLoading from '@/hooks/loading';
-  import { queryPopularList, PopularRecord } from '@/api/dashboard';
+import { ref } from "vue";
+import useLoading from "@/hooks/loading";
+import { queryPopularList, PopularRecord } from "@/api/dashboard";
 
-  const type = ref('text');
-  const { loading, setLoading } = useLoading();
-  const renderList = ref<PopularRecord[]>();
-  const fetchData = async (contentType: string) => {
-    try {
-      setLoading(true);
-      const { data } = await queryPopularList({ type: contentType });
-      renderList.value = data;
-    } catch (err) {
-      // you can report use errorHandler or other
-    } finally {
-      setLoading(false);
-    }
-  };
-  const typeChange = (contentType: string) => {
-    fetchData(contentType);
-  };
-  fetchData('text');
+const type = ref("text");
+const { loading, setLoading } = useLoading();
+const renderList = ref<PopularRecord[]>();
+const fetchData = async (contentType: string) => {
+  try {
+    setLoading(true);
+    const { data } = await queryPopularList({ type: contentType });
+    renderList.value = data;
+  } catch (err) {
+    // you can report use errorHandler or other
+  } finally {
+    setLoading(false);
+  }
+};
+const typeChange = (contentType: string) => {
+  fetchData(contentType);
+};
+fetchData("text");
 </script>
 
 <style scoped lang="less">
-  .general-card {
-    min-height: 388px;
+.general-card {
+  min-height: 388px;
+}
+.increases-cell {
+  display: flex;
+  align-items: center;
+  span {
+    margin-right: 4px;
   }
-  .increases-cell {
-    display: flex;
-    align-items: center;
-    span {
-      margin-right: 4px;
-    }
-  }
+}
 </style>

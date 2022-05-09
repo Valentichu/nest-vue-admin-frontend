@@ -1,9 +1,9 @@
-import { mergeConfig } from 'vite';
-import baseConig from './vite.config.base';
+import { mergeConfig } from "vite";
+import baseConig from "./vite.config.base";
 
 export default mergeConfig(
   {
-    mode: 'development',
+    mode: "development",
     server: {
       open: true,
       fs: {

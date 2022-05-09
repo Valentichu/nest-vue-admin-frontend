@@ -46,9 +46,7 @@
             <a-doption>
               <a-space @click="handleLogout">
                 <icon-export />
-                <span>
-                  登出
-                </span>
+                <span> 登出 </span>
               </a-space>
             </a-doption>
           </template>
@@ -59,60 +57,60 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed } from 'vue';
-  import { useAppStore, useUserStore } from '@/stores';
-  import useUser from '@/hooks/user';
+import { computed } from "vue";
+import { useAppStore, useUserStore } from "@/stores";
+import useUser from "@/hooks/user";
 
-  const appStore = useAppStore();
-  const userStore = useUserStore();
-  const { logout } = useUser();
-  const avatar = ''
-  const handleLogout = () => {
-    logout();
-  };
+const appStore = useAppStore();
+const userStore = useUserStore();
+const { logout } = useUser();
+const avatar = "";
+const handleLogout = () => {
+  logout();
+};
 </script>
 
 <style scoped lang="less">
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    height: 100%;
-    background-color: white;
-    border-bottom: 1px solid rgb(229, 230, 235);
-  }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  background-color: white;
+  border-bottom: 1px solid rgb(229, 230, 235);
+}
 
-  .left-side {
+.left-side {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.right-side {
+  display: flex;
+  padding-right: 20px;
+  list-style: none;
+  li {
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding: 0 10px;
   }
 
-  .right-side {
-    display: flex;
-    padding-right: 20px;
-    list-style: none;
-    li {
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
-    }
-
-    a {
-      color: var(--color-text-1);
-      text-decoration: none;
-    }
-    .nav-btn {
-      border-color: rgb(var(--gray-2));
-      color: rgb(var(--gray-8));
-      font-size: 16px;
-    }
-    .trigger-btn,
-    .ref-btn {
-      position: absolute;
-      bottom: 14px;
-    }
-    .trigger-btn {
-      margin-left: 14px;
-    }
+  a {
+    color: var(--color-text-1);
+    text-decoration: none;
   }
+  .nav-btn {
+    border-color: rgb(var(--gray-2));
+    color: rgb(var(--gray-8));
+    font-size: 16px;
+  }
+  .trigger-btn,
+  .ref-btn {
+    position: absolute;
+    bottom: 14px;
+  }
+  .trigger-btn {
+    margin-left: 14px;
+  }
+}
 </style>

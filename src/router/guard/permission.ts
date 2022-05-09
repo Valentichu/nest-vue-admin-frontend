@@ -1,10 +1,10 @@
-import type { Router, LocationQueryRaw } from 'vue-router';
-import NProgress from 'nprogress'; // progress bar
+import type { Router, LocationQueryRaw } from "vue-router";
+import NProgress from "nprogress"; // progress bar
 
-import usePermission from '@/hooks/permission';
-import { useUserStore } from '@/stores';
-import { isLogin } from '@/utils/auth';
-import appRoutes from '../routes';
+import usePermission from "@/hooks/permission";
+import { useUserStore } from "@/stores";
+import { isLogin } from "@/utils/auth";
+import appRoutes from "../routes";
 
 export default function setupPermissionGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {
@@ -12,9 +12,12 @@ export default function setupPermissionGuard(router: Router) {
     const userStore = useUserStore();
     async function crossroads() {
       const Permission = usePermission();
-      if (Permission.accessRoute(to) && !['/', '/login'].includes(to.path)) next();
+      if (Permission.accessRoute(to) && !["/", "/login"].includes(to.path))
+        next();
       else {
-        const destination = Permission.findFirstPermissionRoute(appRoutes) || { name: 'notFound' };
+        const destination = Permission.findFirstPermissionRoute(appRoutes) || {
+          name: "notFound",
+        };
         next(destination);
       }
       NProgress.done();
@@ -28,7 +31,7 @@ export default function setupPermissionGuard(router: Router) {
           crossroads();
         } catch (error) {
           next({
-            name: 'login',
+            name: "login",
             query: {
               redirect: to.name,
               ...to.query,
@@ -38,13 +41,13 @@ export default function setupPermissionGuard(router: Router) {
         }
       }
     } else {
-      if (to.name === 'login') {
+      if (to.name === "login") {
         next();
         NProgress.done();
         return;
       }
       next({
-        name: 'login',
+        name: "login",
         query: {
           redirect: to.name,
           ...to.query,

@@ -1,6 +1,6 @@
-import type { RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw } from "vue-router";
 
-const modules = import.meta.globEager('./modules/*.ts');
+const modules = import.meta.globEager("./modules/*.ts");
 const appRoutes: RouteRecordRaw[] = [];
 
 Object.keys(modules).forEach((key) => {

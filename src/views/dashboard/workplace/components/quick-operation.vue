@@ -13,9 +13,7 @@
         <div class="icon">
           <component :is="link.icon" />
         </div>
-        <a-typography-paragraph class="text">
-          查看
-        </a-typography-paragraph>
+        <a-typography-paragraph class="text"> 查看 </a-typography-paragraph>
       </a-col>
     </a-row>
     <a-divider class="split-line" style="margin: 0" />
@@ -23,13 +21,13 @@
 </template>
 
 <script lang="ts" setup>
-  const links = [
-    { text: 'workplace.contentManagement', icon: 'icon-file' },
-    { text: 'workplace.contentStatistical', icon: 'icon-storage' },
-    { text: 'workplace.advanced', icon: 'icon-settings' },
-    { text: 'workplace.onlinePromotion', icon: 'icon-mobile' },
-    { text: 'workplace.contentPutIn', icon: 'icon-fire' },
-  ];
+const links = [
+  { text: "workplace.contentManagement", icon: "icon-file" },
+  { text: "workplace.contentStatistical", icon: "icon-storage" },
+  { text: "workplace.advanced", icon: "icon-settings" },
+  { text: "workplace.onlinePromotion", icon: "icon-mobile" },
+  { text: "workplace.contentPutIn", icon: "icon-fire" },
+];
 </script>
 
 <style scoped lang="less"></style>

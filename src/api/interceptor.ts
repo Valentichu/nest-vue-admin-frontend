@@ -1,9 +1,9 @@
-import axios from 'axios';
-import { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios from "axios";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
 
-import { message, Modal } from 'ant-design-vue';
-import { useUserStore } from '@/stores';
-import { getToken } from '@/utils/auth';
+import { message, Modal } from "ant-design-vue";
+import { useUserStore } from "@/stores";
+import { getToken } from "@/utils/auth";
 
 export interface HttpResponse<T = unknown> {
   msg: string;
@@ -42,18 +42,15 @@ axios.interceptors.response.use(
     // if the custom code is not 200, it is judged as an error.
     if (![200, 401].includes(res.code)) {
       message.error({
-        content: res.msg || '接口异常，请联系管理员',
+        content: res.msg || "接口异常，请联系管理员",
         duration: 5,
       });
       // 401: token失效
-      if (
-        [401].includes(res.code)
-      ) {
+      if ([401].includes(res.code)) {
         Modal.error({
-          title: '登出',
-          content:
-            '你的登录已经失效，请重新登录',
-          okText: '重新登录',
+          title: "登出",
+          content: "你的登录已经失效，请重新登录",
+          okText: "重新登录",
           async onOk() {
             const userStore = useUserStore();
 
@@ -62,15 +59,15 @@ axios.interceptors.response.use(
           },
         });
       }
-      return Promise.reject(new Error(res.msg || '接口异常，请联系管理员'));
+      return Promise.reject(new Error(res.msg || "接口异常，请联系管理员"));
     }
     return res;
   },
   (error) => {
     message.error({
-      content: error.msg || '网络异常，请联系管理员',
+      content: error.msg || "网络异常，请联系管理员",
       duration: 5,
     });
-    return Promise.reject(new Error('网络异常，请联系管理员'));
+    return Promise.reject(new Error("网络异常，请联系管理员"));
   }
 );

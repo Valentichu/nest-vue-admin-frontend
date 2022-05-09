@@ -1,6 +1,6 @@
-import { RouteLocationNormalized, RouteRecordRaw } from 'vue-router';
-import { useUserStore } from '@/stores';
-import _ from 'lodash'
+import { RouteLocationNormalized, RouteRecordRaw } from "vue-router";
+import { useUserStore } from "@/stores";
+import _ from "lodash";
 
 export default function usePermission() {
   const userStore = useUserStore();
@@ -9,8 +9,9 @@ export default function usePermission() {
       return (
         !route.meta?.requiresAuth ||
         !route.meta?.permissions ||
-        route.meta?.permissions?.includes('*') ||
-        _.intersection(route.meta?.permissions, userStore.permissions).length > 0
+        route.meta?.permissions?.includes("*") ||
+        _.intersection(route.meta?.permissions, userStore.permissions).length >
+          0
       );
     },
     findFirstPermissionRoute(_routers: any): any {
@@ -22,12 +23,11 @@ export default function usePermission() {
             return { name: firstElement.name };
           }
           if (this.findFirstPermissionRoute(firstElement.children)) {
-            return this.findFirstPermissionRoute(firstElement.children)
+            return this.findFirstPermissionRoute(firstElement.children);
           }
         }
       }
       return null;
     },
-    // You can add any rules you want
   };
 }

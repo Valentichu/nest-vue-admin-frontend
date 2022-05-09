@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export interface ContentDataRecord {
   x: string;
@@ -6,7 +6,7 @@ export interface ContentDataRecord {
 }
 
 export function queryContentData() {
-  return axios.get<ContentDataRecord[]>('/api/content-data');
+  return axios.get<ContentDataRecord[]>("/api/content-data");
 }
 
 export interface PopularRecord {
@@ -17,5 +17,5 @@ export interface PopularRecord {
 }
 
 export function queryPopularList(params: { type: string }) {
-  return axios.get<PopularRecord[]>('/api/popular/list', { params });
+  return axios.get<PopularRecord[]>("/api/popular/list", { params });
 }

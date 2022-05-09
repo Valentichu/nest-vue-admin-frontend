@@ -1,6 +1,6 @@
-import { DirectiveBinding } from 'vue';
-import { useUserStore } from '@/stores';
-import _ from 'lodash'
+import { DirectiveBinding } from "vue";
+import { useUserStore } from "@/stores";
+import _ from "lodash";
 
 function checkPermission(el: HTMLElement, binding: DirectiveBinding) {
   const { value } = binding;
@@ -11,7 +11,8 @@ function checkPermission(el: HTMLElement, binding: DirectiveBinding) {
     if (value.length > 0) {
       const permissionValues = value;
 
-      const hasPermission = _.intersection(permissionValues, permissions).length > 0;
+      const hasPermission =
+        _.intersection(permissionValues, permissions).length > 0;
       if (!hasPermission && el.parentNode) {
         el.parentNode.removeChild(el);
       }

@@ -6,5 +6,5 @@ export interface UserState {
   roleName?: string;
   departmentId?: number;
   departmentName?: string;
-  permissions?: string[]
+  permissions?: string[];
 }

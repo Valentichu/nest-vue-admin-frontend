@@ -1,16 +1,16 @@
-import { mergeConfig } from 'vite';
-import baseConig from './vite.config.base';
+import { mergeConfig } from "vite";
+import baseConig from "./vite.config.base";
 
 export default mergeConfig(
   {
-    mode: 'production',
+    mode: "production",
     build: {
       rollupOptions: {
         output: {
           manualChunks: {
-            ant: ['ant-design-vue'],
-            chart: ['echarts', 'vue-echarts'],
-            vue: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
+            ant: ["ant-design-vue"],
+            chart: ["echarts", "vue-echarts"],
+            vue: ["vue", "vue-router", "pinia", "@vueuse/core"],
           },
         },
       },

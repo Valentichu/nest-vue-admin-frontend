@@ -1,6 +1,6 @@
-import 'vue-router';
+import "vue-router";
 
-declare module 'vue-router' {
+declare module "vue-router" {
   interface RouteMeta {
     permissions?: string[]; // Controls permissions that have access to the page
     requiresAuth: boolean; // Whether login is required to access the current page (every route must declare)
