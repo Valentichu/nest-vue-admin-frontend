@@ -40,10 +40,10 @@ axios.interceptors.response.use(
   (response: AxiosResponse<HttpResponse>) => {
     const res = response.data;
     // if the custom code is not 200, it is judged as an error.
-    if ([200, 401].includes(res.code)) {
+    if (![200, 401].includes(res.code)) {
       message.error({
         content: res.msg || '接口异常，请联系管理员',
-        duration: 5 * 1000,
+        duration: 5,
       });
       // 401: token失效
       if (
@@ -69,8 +69,8 @@ axios.interceptors.response.use(
   (error) => {
     message.error({
       content: error.msg || '网络异常，请联系管理员',
-      duration: 5 * 1000,
+      duration: 5,
     });
-    return Promise.reject(error);
+    return Promise.reject(new Error('网络异常，请联系管理员'));
   }
 );

@@ -5,6 +5,8 @@ import directive from './directive';
 import App from './App.vue';
 
 import '@/assets/style/global.less';
+import 'ant-design-vue/es/message/style/css';
+import 'ant-design-vue/es/modal/style/css';
 import '@/api/interceptor';
 
 const app = createApp(App);

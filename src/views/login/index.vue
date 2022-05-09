@@ -29,7 +29,6 @@ import LoginForm from './components/login-form.vue';
   }
 
   .content {
-    position: relative;
     display: flex;
     flex: 1;
     align-items: center;
@@ -45,28 +44,4 @@ import LoginForm from './components/login-form.vue';
   }
 }
 
-.logo {
-  position: fixed;
-  top: 24px;
-  left: 22px;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  &-text {
-    margin-right: 4px;
-    margin-left: 4px;
-    color: rgb(247, 248,255);
-    font-size: 20px;
-  }
-}
-</style>
-
-<style lang="less" scoped>
-.container {
-  .banner {
-    width: 25%;
-  }
-}
 </style>
