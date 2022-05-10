@@ -9,7 +9,14 @@
     </div>
     <div class="right-side">
       <a-dropdown :trigger="['click']">
-        <a-avatar :size="32" :style="{ marginRight: '16px', cursor: 'pointer', backgroundColor: '#87d068' }">
+        <a-avatar
+          :size="32"
+          :style="{
+            marginRight: '16px',
+            cursor: 'pointer',
+            backgroundColor: '#87d068',
+          }"
+        >
           <template #icon>
             <user-outlined />
           </template>

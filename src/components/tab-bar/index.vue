@@ -1,7 +1,13 @@
 <template>
   <div class="tab-bar-container">
-    <a-tag v-for="(tag, index) in tagList" :key="tag.fullPath" :color="tag.fullPath === $route.fullPath ? 'blue' : ''"
-      @click="goto(tag)" @close="tagClose(tag, index)" :closable="index > 0">
+    <a-tag
+      v-for="(tag, index) in tagList"
+      :key="tag.fullPath"
+      :color="tag.fullPath === $route.fullPath ? 'blue' : ''"
+      @click="goto(tag)"
+      @close="tagClose(tag, index)"
+      :closable="index > 0"
+    >
       {{ tag.title }}
     </a-tag>
   </div>
