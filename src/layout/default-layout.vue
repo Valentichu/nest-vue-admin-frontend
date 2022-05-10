@@ -1,22 +1,21 @@
 <template>
   <a-layout class="layout">
-    <a-layout-header v-if="navbar" class="layout-navbar" :style="{ height: `${navbarHeight}px` }">
+    <a-layout-header v-if="appStore.navbar" class="layout-navbar" :style="{ height: `${navbarHeight}px` }">
       <Navbar />
     </a-layout-header>
 
     <a-layout>
-      <a-layout-sider v-if="renderMenu" class="layout-sider" :width="menuWidth">
+      <a-layout-sider v-if="appStore.menu" class="layout-sider" :width="menuWidth">
         <Menu></Menu>
       </a-layout-sider>
-      <!-- <a-layout-content class="layout-content" :style="paddingStyle">
+      <a-layout-content class="layout-content">
         <TabBar v-if="appStore.tabBar" />
-        <PageLayout />
-      </a-layout-content> -->
+        <div class="layout-main">
+          <PageLayout />
+          <Footer v-if="appStore.footer"></Footer>
+        </div>
+      </a-layout-content>
     </a-layout>
-
-    <!-- <a-layout-footer v-if="footer">
-      <Footer></Footer>
-    </a-layout-footer> -->
   </a-layout>
 </template>
 
@@ -36,19 +35,10 @@ const userStore = useUserStore();
 const router = useRouter();
 const route = useRoute();
 const permission = usePermission();
-const navbar = computed(() => appStore.navbar);
 const navbarHeight = computed(() => appStore.navbarHeight);
-const renderMenu = computed(() => appStore.menu);
-const footer = computed(() => appStore.footer);
 const menuWidth = computed(() => {
   return appStore.menuCollapse ? 48 : appStore.menuWidth;
 });
-const collapsed = computed(() => {
-  return appStore.menuCollapse;
-});
-const setCollapsed = (val: boolean) => {
-  appStore.updateSettings({ menuCollapse: val });
-};
 watch(
   () => userStore.permissions,
   (permissions) => {
@@ -59,9 +49,6 @@ watch(
 </script>
 
 <style scoped lang="less">
-@nav-size-height: 60px;
-@layout-max-width: 1100px;
-
 .layout {
   width: 100%;
   height: 100vh;
@@ -73,6 +60,17 @@ watch(
 
 .layout-sider {
   background-color: white;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 8%);
 }
 
+.layout-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-main {
+  height: 0;
+  flex: auto;
+  overflow: auto;
+}
 </style>

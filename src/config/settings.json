@@ -2,7 +2,7 @@
   "navbar": true,
   "menu": true,
   "menuCollapse": false,
-  "footer": true,
+  "footer": false,
   "navbarHeight": 60,
   "menuWidth": 220,
   "tabBar": true

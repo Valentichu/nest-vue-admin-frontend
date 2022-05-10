@@ -14,7 +14,7 @@ export default {
       name: "Workplace",
       component: () => import("@/views/dashboard/workplace/index.vue"),
       meta: {
-        name: "首页",
+        name: "工作区",
         requiresAuth: true,
         pemissions: ["*"],
       },

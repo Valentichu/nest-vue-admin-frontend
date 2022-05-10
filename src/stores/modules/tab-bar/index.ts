@@ -15,14 +15,7 @@ const formatTag = (route: RouteLocationNormalized): TagProps => {
 const useAppStore = defineStore("tabBar", {
   state: (): TabBarState => ({
     cacheTabList: new Set(),
-    tagList: [
-      // Set the first element dynamically as needed
-      {
-        title: "首页",
-        name: "Workplace",
-        fullPath: "/dashboard/workplace",
-      },
-    ],
+    tagList: [],
   }),
 
   getters: {

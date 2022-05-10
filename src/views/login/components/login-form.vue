@@ -57,7 +57,7 @@ import { message } from "ant-design-vue";
 import { useStorage } from "@vueuse/core";
 import { useUserStore } from "@/stores";
 import useLoading from "@/hooks/loading";
-import { LoginData } from "@/api/user";
+import { LoginData } from "@/api/auth";
 
 const router = useRouter();
 const errorMessage = ref("");

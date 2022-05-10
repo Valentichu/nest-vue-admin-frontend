@@ -1,7 +1,7 @@
 <template>
-  <a-breadcrumb class="container-breadcrumb">
+  <a-breadcrumb>
     <a-breadcrumb-item>
-      <icon-apps />
+      <windows-outlined />
     </a-breadcrumb-item>
     <a-breadcrumb-item v-for="item in items" :key="item">
       {{ item }}
@@ -23,7 +23,4 @@ defineProps({
 </script>
 
 <style scoped lang="less">
-.container-breadcrumb {
-  margin: 16px 0;
-}
 </style>

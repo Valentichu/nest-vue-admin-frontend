@@ -1,56 +1,27 @@
 <template>
   <div class="tab-bar-container">
-    <a-affix ref="affixRef" :offset-top="offsetTop">
-      <div class="tab-bar-box">
-        <div class="tab-bar-scroll">
-          <div class="tags-wrap">
-            <span
-              v-for="(tag, index) in tagList"
-              :key="tag.fullPath"
-              :class="{ 'link-actived': tag.fullPath === $route.fullPath }"
-              @click="goto(tag)"
-            >
-              <span class="tag-link">
-                {{ tag.title }}
-              </span>
-              <span @click.stop="tagClose(tag, index)">
-                <close-outlined />
-              </span>
-            </span>
-          </div>
-        </div>
-        <div class="tag-bar-operation"></div>
-      </div>
-    </a-affix>
+    <a-tag v-for="(tag, index) in tagList" :key="tag.fullPath" :color="tag.fullPath === $route.fullPath ? 'blue' : ''"
+      @click="goto(tag)" @close="tagClose(tag, index)" :closable="index > 0">
+      {{ tag.title }}
+    </a-tag>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch } from "vue";
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 import type { RouteLocationNormalized } from "vue-router";
 import { listenerRouteChange } from "@/utils/route-listener";
-import { useAppStore, useTabBarStore } from "@/stores";
+import { useTabBarStore } from "@/stores";
 import type { TagProps } from "@/stores/modules/tab-bar/types";
 
-const appStore = useAppStore();
 const tabBarStore = useTabBarStore();
 
 const router = useRouter();
-const affixRef = ref();
 const tagList = computed(() => {
   return tabBarStore.getTabList;
 });
-const offsetTop = computed(() => {
-  return appStore.navbar ? 60 : 0;
-});
 
-watch(
-  () => appStore.navbar,
-  () => {
-    affixRef.value.updatePosition();
-  }
-);
 listenerRouteChange((route: RouteLocationNormalized) => {
   if (
     !route.meta.noAffix &&
@@ -73,40 +44,8 @@ const goto = (tag: TagProps) => {
 
 <style scoped lang="less">
 .tab-bar-container {
-  position: relative;
-  background-color: var(--color-bg-2);
-  .tab-bar-box {
-    display: flex;
-    padding: 0 0 0 20px;
-    background-color: var(--color-bg-2);
-    border-bottom: 1px solid var(--color-border);
-    .tab-bar-scroll {
-      height: 32px;
-      flex: 1;
-      overflow: hidden;
-      .tags-wrap {
-        padding: 4px 0;
-        height: 42px;
-        white-space: nowrap;
-        overflow-x: auto;
-      }
-    }
-  }
-
-  .tag-bar-operation {
-    width: 100px;
-    height: 32px;
-  }
-}
-
-.tag-link {
-  color: var(--color-text-2);
-  text-decoration: none;
-}
-.link-actived {
-  color: rgb(var(--link-6));
-  .tag-link {
-    color: rgb(var(--link-6));
-  }
+  background-color: #fff;
+  padding: 5px 20px;
+  border-bottom: 1px solid rgb(229, 230, 235);
 }
 </style>
