@@ -20,8 +20,8 @@ const router = createRouter({
       },
     },
     {
-      name: "root",
       path: "/",
+      name: "root",
       component: DefaultLayout,
       children: appRoutes,
     },
