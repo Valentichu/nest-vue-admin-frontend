@@ -3,7 +3,7 @@ export default {
   name: 'dashboard',
   component: () => import('@/views/dashboard/index.vue'),
   meta: {
-    name: '首页',
+    title: '首页',
     requiresAuth: true,
     icon: 'area-chart-outlined',
     order: 0,
@@ -14,9 +14,19 @@ export default {
       name: 'Workplace',
       component: () => import('@/views/dashboard/workplace/index.vue'),
       meta: {
-        name: '工作区',
+        title: '工作区',
         requiresAuth: true,
-        pemissions: ['*'],
+        permissions: ['1'],
+      },
+    },
+    {
+      path: 'demo',
+      name: 'Demo',
+      component: () => import('@/views/dashboard/test/index.vue'),
+      meta: {
+        title: '测试1',
+        requiresAuth: true,
+        permissions: ['*'],
       },
     },
   ],

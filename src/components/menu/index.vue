@@ -89,7 +89,7 @@ export default defineComponent({
                 key={element?.name}
                 v-slots={{
                   icon,
-                  title: () => h(compile(element?.meta?.name || '')),
+                  title: () => h(compile(element?.meta?.title || '')),
                 }}
               >
                 {travel(element?.children)}
@@ -100,7 +100,7 @@ export default defineComponent({
                 v-slots={{ icon }}
                 onClick={() => goto(element)}
               >
-                {element?.meta?.name || ''}
+                {element?.meta?.title || ''}
               </a-menu-item>
             )
             nodes.push(r as never)

@@ -1,7 +1,6 @@
 {
   "navbar": true,
   "menu": true,
-  "menuCollapse": false,
   "footer": false,
   "navbarHeight": 60,
   "menuWidth": 220,

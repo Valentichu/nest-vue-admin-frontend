@@ -7,6 +7,7 @@
       @click="goto(tag)"
       @close="tagClose(tag, index)"
       :closable="index > 0"
+      style="cursor: pointer"
     >
       {{ tag.title }}
     </a-tag>

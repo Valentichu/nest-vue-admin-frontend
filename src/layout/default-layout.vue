@@ -44,9 +44,7 @@ const router = useRouter()
 const route = useRoute()
 const permission = usePermission()
 const navbarHeight = computed(() => appStore.navbarHeight)
-const menuWidth = computed(() => {
-  return appStore.menuCollapse ? 48 : appStore.menuWidth
-})
+const menuWidth = computed(() => appStore.menuWidth)
 watch(
   () => userStore.permissions,
   (permissions) => {

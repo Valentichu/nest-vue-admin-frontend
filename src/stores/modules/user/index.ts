@@ -16,12 +16,6 @@ const useUserStore = defineStore('user', {
     permissions: undefined,
   }),
 
-  getters: {
-    userInfo(state: UserState): UserState {
-      return { ...state }
-    },
-  },
-
   actions: {
     // switchRoles() {
     //   return new Promise((resolve) => {
