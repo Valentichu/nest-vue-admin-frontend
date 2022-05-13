@@ -1,15 +1,11 @@
-import { App, ComponentPublicInstance } from "vue";
+import { App, ComponentPublicInstance } from 'vue'
 // import axios from 'axios';
 
 export default function handleError(Vue: App, baseUrl: string) {
   if (!baseUrl) {
-    return;
+    return
   }
-  Vue.config.errorHandler = (
-    err: unknown,
-    instance: ComponentPublicInstance | null,
-    info: string
-  ) => {
+  Vue.config.errorHandler = (err: unknown, instance: ComponentPublicInstance | null, info: string) => {
     // send error info
     // axios.post(`${baseUrl}/report-error`, {
     //   err,
@@ -24,5 +20,5 @@ export default function handleError(Vue: App, baseUrl: string) {
     //   // url info
     //   // ...
     // });
-  };
+  }
 }

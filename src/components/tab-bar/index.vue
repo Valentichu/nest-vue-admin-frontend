@@ -14,38 +14,35 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useRouter } from "vue-router";
-import type { RouteLocationNormalized } from "vue-router";
-import { listenerRouteChange } from "@/utils/route-listener";
-import { useTabBarStore } from "@/stores";
-import type { TagProps } from "@/stores/modules/tab-bar/types";
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import type { RouteLocationNormalized } from 'vue-router'
+import { listenerRouteChange } from '@/utils/route-listener'
+import { useTabBarStore } from '@/stores'
+import type { TagProps } from '@/stores/modules/tab-bar/types'
 
-const tabBarStore = useTabBarStore();
+const tabBarStore = useTabBarStore()
 
-const router = useRouter();
+const router = useRouter()
 const tagList = computed(() => {
-  return tabBarStore.getTabList;
-});
+  return tabBarStore.getTabList
+})
 
 listenerRouteChange((route: RouteLocationNormalized) => {
-  if (
-    !route.meta.noAffix &&
-    !tagList.value.some((tag) => tag.fullPath === route.fullPath)
-  ) {
-    tabBarStore.updateTabList(route);
+  if (!route.meta.noAffix && !tagList.value.some((tag) => tag.fullPath === route.fullPath)) {
+    tabBarStore.updateTabList(route)
   }
-}, true);
+}, true)
 const tagClose = (tag: TagProps, idx: number) => {
-  tabBarStore.deleteTag(idx, tag);
+  tabBarStore.deleteTag(idx, tag)
   if (idx === tagList.value.length) {
-    const latest = tagList.value[tagList.value.length - 1];
-    router.push({ name: latest.name });
+    const latest = tagList.value[tagList.value.length - 1]
+    router.push({ name: latest.name })
   }
-};
+}
 const goto = (tag: TagProps) => {
-  router.push({ ...tag });
-};
+  router.push({ ...tag })
+}
 </script>
 
 <style scoped lang="less">

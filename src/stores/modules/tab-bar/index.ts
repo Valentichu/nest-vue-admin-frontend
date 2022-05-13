@@ -1,18 +1,18 @@
-import type { RouteLocationNormalized } from "vue-router";
-import { defineStore } from "pinia";
-import { TabBarState, TagProps } from "./types";
+import type { RouteLocationNormalized } from 'vue-router'
+import { defineStore } from 'pinia'
+import { TabBarState, TagProps } from './types'
 
 const formatTag = (route: RouteLocationNormalized): TagProps => {
-  const { name, meta, fullPath, query } = route;
+  const { name, meta, fullPath, query } = route
   return {
-    title: meta.name || "",
+    title: meta.name || '',
     name: String(name),
     fullPath,
     query,
-  };
-};
+  }
+}
 
-const useAppStore = defineStore("tabBar", {
+const useAppStore = defineStore('tabBar', {
   state: (): TabBarState => ({
     cacheTabList: new Set(),
     tagList: [],
@@ -20,25 +20,25 @@ const useAppStore = defineStore("tabBar", {
 
   getters: {
     getTabList(): TagProps[] {
-      return this.tagList;
+      return this.tagList
     },
     getCacheList(): string[] {
-      return Array.from(this.cacheTabList);
+      return Array.from(this.cacheTabList)
     },
   },
 
   actions: {
     updateTabList(route: RouteLocationNormalized) {
-      this.tagList.push(formatTag(route));
+      this.tagList.push(formatTag(route))
       if (!route.meta.ignoreCache) {
-        this.cacheTabList.add(route.name as string);
+        this.cacheTabList.add(route.name as string)
       }
     },
     deleteTag(idx: number, tag: TagProps) {
-      this.tagList.splice(idx, 1);
-      this.cacheTabList.delete(tag.name);
+      this.tagList.splice(idx, 1)
+      this.cacheTabList.delete(tag.name)
     },
   },
-});
+})
 
-export default useAppStore;
+export default useAppStore
