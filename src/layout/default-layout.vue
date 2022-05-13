@@ -12,6 +12,7 @@
         v-if="appStore.menu"
         class="layout-sider"
         :width="menuWidth"
+        collapsible
       >
         <Menu></Menu>
       </a-layout-sider>
@@ -68,6 +69,10 @@ watch(
 .layout-sider {
   background-color: white;
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 8%);
+  :deep(.ant-layout-sider-trigger) {
+    background-color: white;
+    color: #1890ff;
+  }
 }
 
 .layout-content {
