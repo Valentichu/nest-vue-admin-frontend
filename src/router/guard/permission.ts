@@ -12,9 +12,9 @@ export default function setupPermissionGuard(router: Router) {
     const userStore = useUserStore()
     async function crossroads() {
       const Permission = usePermission()
-      if (Permission.accessRoute(to) && !['/', '/login'].includes(to.path))
+      if (Permission.accessRoute(to) && !['/', '/login'].includes(to.path)) {
         next()
-      else {
+      } else {
         const destination = Permission.findFirstPermissionRoute(appRoutes) || {
           name: 'notFound',
         }
@@ -30,6 +30,7 @@ export default function setupPermissionGuard(router: Router) {
           await userStore.info()
           crossroads()
         } catch (error) {
+          await userStore.logout()
           next({
             name: 'login',
             query: {
@@ -48,10 +49,13 @@ export default function setupPermissionGuard(router: Router) {
       }
       next({
         name: 'login',
-        query: {
-          redirect: to.name,
-          ...to.query,
-        } as LocationQueryRaw,
+        query:
+          to.name !== 'root'
+            ? ({
+                redirect: to.name,
+                ...to.query,
+              } as LocationQueryRaw)
+            : undefined,
       })
       NProgress.done()
     }

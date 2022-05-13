@@ -1,6 +1,4 @@
 import { useRouter } from 'vue-router'
-import { message } from 'ant-design-vue'
-
 import { useUserStore } from '@/stores'
 
 export default function useUser() {
@@ -8,14 +6,8 @@ export default function useUser() {
   const userStore = useUserStore()
   const logout = async (logoutTo?: string) => {
     await userStore.logout()
-    const currentRoute = router.currentRoute.value
-    message.success('登出成功')
     router.push({
-      name: logoutTo && typeof logoutTo === 'string' ? logoutTo : 'login',
-      query: {
-        ...router.currentRoute.value.query,
-        redirect: currentRoute.name as string,
-      },
+      name: 'login',
     })
   }
   return {

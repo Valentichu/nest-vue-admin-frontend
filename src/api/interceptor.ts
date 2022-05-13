@@ -37,26 +37,28 @@ axios.interceptors.request.use(
 )
 // add response interceptors
 axios.interceptors.response.use(
-  (response: AxiosResponse<HttpResponse>) => {
+  async (response: AxiosResponse<HttpResponse>) => {
     const res = response.data
     // if the custom code is not 200, it is judged as an error.
-    if (![200, 401].includes(res.code)) {
-      message.error({
-        content: res.msg || '接口异常，请联系管理员',
-        duration: 5,
-      })
+    if (res.code !== 200) {
       // 401: token失效
-      if ([401].includes(res.code)) {
+      if (res.code == 401) {
         Modal.error({
           title: '登出',
           content: '你的登录已经失效，请重新登录',
           okText: '重新登录',
+          keyboard: false,
           async onOk() {
             const userStore = useUserStore()
 
             await userStore.logout()
             window.location.reload()
           },
+        })
+      } else {
+        message.error({
+          content: res.msg || '接口异常，请联系管理员',
+          duration: 5,
         })
       }
       return Promise.reject(new Error(res.msg || '接口异常，请联系管理员'))

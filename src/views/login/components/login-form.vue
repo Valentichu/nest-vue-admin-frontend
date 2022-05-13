@@ -79,12 +79,16 @@ const onFinish = async (values: LoginData) => {
   try {
     await userStore.login(values)
     const { redirect, ...othersQuery } = router.currentRoute.value.query
-    router.push({
-      name: (redirect as string) || 'Workplace',
-      query: {
-        ...othersQuery,
-      },
-    })
+    if (redirect) {
+      router.push({
+        name: redirect as string,
+        query: {
+          ...othersQuery,
+        },
+      })
+    } else {
+      router.push({ name: 'root' })
+    }
     message.success('登录成功')
     const { rememberPassword } = loginConfig.value
     const { username, password } = values
