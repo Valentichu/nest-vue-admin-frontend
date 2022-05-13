@@ -12,4 +12,9 @@ module.exports = {
   env: {
     "vue/setup-compiler-macros": true,
   },
+  rules: {
+    "vue/multi-word-component-names": 0,
+    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+  },
 };
