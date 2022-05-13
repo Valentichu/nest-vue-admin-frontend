@@ -29,7 +29,10 @@ const tagList = computed(() => {
 })
 
 listenerRouteChange((route: RouteLocationNormalized) => {
-  if (!route.meta.noAffix && !tagList.value.some((tag) => tag.fullPath === route.fullPath)) {
+  if (
+    !route.meta.noAffix &&
+    !tagList.value.some((tag) => tag.fullPath === route.fullPath)
+  ) {
     tabBarStore.updateTabList(route)
   }
 }, true)

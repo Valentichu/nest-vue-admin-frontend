@@ -1,10 +1,18 @@
 <template>
   <a-layout class="layout">
-    <a-layout-header v-if="appStore.navbar" class="layout-navbar" :style="{ height: `${navbarHeight}px` }">
+    <a-layout-header
+      v-if="appStore.navbar"
+      class="layout-navbar"
+      :style="{ height: `${navbarHeight}px` }"
+    >
       <Navbar />
     </a-layout-header>
     <a-layout>
-      <a-layout-sider v-if="appStore.menu" class="layout-sider" :width="menuWidth">
+      <a-layout-sider
+        v-if="appStore.menu"
+        class="layout-sider"
+        :width="menuWidth"
+      >
         <Menu></Menu>
       </a-layout-sider>
       <a-layout-content class="layout-content">
@@ -41,7 +49,8 @@ const menuWidth = computed(() => {
 watch(
   () => userStore.permissions,
   (permissions) => {
-    if (permissions && !permission.accessRoute(route)) router.push({ name: 'notFound' })
+    if (permissions && !permission.accessRoute(route))
+      router.push({ name: 'notFound' })
   }
 )
 </script>

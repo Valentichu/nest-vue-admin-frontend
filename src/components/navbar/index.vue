@@ -2,7 +2,9 @@
   <div class="navbar">
     <div class="left-side">
       <a-space>
-        <a-typography-title :style="{ margin: 0, fontSize: '18px' }" :level="5"> Nest Vue Admin </a-typography-title>
+        <a-typography-title :style="{ margin: 0, fontSize: '18px' }" :level="5">
+          Nest Vue Admin
+        </a-typography-title>
       </a-space>
     </div>
     <div class="right-side">

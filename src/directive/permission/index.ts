@@ -11,7 +11,8 @@ function checkPermission(el: HTMLElement, binding: DirectiveBinding) {
     if (value.length > 0) {
       const permissionValues = value
 
-      const hasPermission = _.intersection(permissionValues, permissions).length > 0
+      const hasPermission =
+        _.intersection(permissionValues, permissions).length > 0
       if (!hasPermission && el.parentNode) {
         el.parentNode.removeChild(el)
       }

@@ -2,8 +2,19 @@
   <div class="login-form-wrapper">
     <div class="login-form-title">Nest Vue Admin</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
-    <a-form ref="loginForm" :model="userInfo" name="normal_login" class="login-form" layout="vertical" @finish="onFinish">
-      <a-form-item label="用户名" name="username" :rules="[{ required: true, message: '请输入用户名' }]">
+    <a-form
+      ref="loginForm"
+      :model="userInfo"
+      name="normal_login"
+      class="login-form"
+      layout="vertical"
+      @finish="onFinish"
+    >
+      <a-form-item
+        label="用户名"
+        name="username"
+        :rules="[{ required: true, message: '请输入用户名' }]"
+      >
         <a-input v-model:value="userInfo.username">
           <template #prefix>
             <user-outlined />
@@ -11,7 +22,11 @@
         </a-input>
       </a-form-item>
 
-      <a-form-item label="密码" name="password" :rules="[{ required: true, message: '请输入密码' }]">
+      <a-form-item
+        label="密码"
+        name="password"
+        :rules="[{ required: true, message: '请输入密码' }]"
+      >
         <a-input-password v-model:value="userInfo.password" allow-clear>
           <template #prefix>
             <lock-outlined />
@@ -20,9 +35,16 @@
       </a-form-item>
       <a-space :size="16" direction="vertical">
         <div class="login-form-password-actions">
-          <a-checkbox :checked="loginConfig.rememberPassword" @change="setRememberPassword"> 记住密码 </a-checkbox>
+          <a-checkbox
+            :checked="loginConfig.rememberPassword"
+            @change="setRememberPassword"
+          >
+            记住密码
+          </a-checkbox>
         </div>
-        <a-button type="primary" html-type="submit" long :loading="loading"> 登录 </a-button>
+        <a-button type="primary" html-type="submit" long :loading="loading">
+          登录
+        </a-button>
       </a-space>
     </a-form>
   </div>

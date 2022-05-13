@@ -10,7 +10,9 @@ export default defineComponent({
     const permission = usePermission()
     const router = useRouter()
     const appRoute = computed(() => {
-      return router.getRoutes().find((el) => el.name === 'root') as RouteRecordNormalized
+      return router
+        .getRoutes()
+        .find((el) => el.name === 'root') as RouteRecordNormalized
     })
     const menuTree = computed(() => {
       const copyRouter = JSON.parse(JSON.stringify(appRoute.value.children))
@@ -31,7 +33,9 @@ export default defineComponent({
           }
 
           // route filter hideInMenu true
-          element.children = element.children.filter((x) => x.meta?.hideInMenu !== true)
+          element.children = element.children.filter(
+            (x) => x.meta?.hideInMenu !== true
+          )
 
           // Associated child node
           const subItem = travel(element.children, layer)
@@ -67,7 +71,8 @@ export default defineComponent({
     }
     listenerRouteChange((newRoute) => {
       if (newRoute.meta.requiresAuth && !newRoute.meta.hideInMenu) {
-        const key = newRoute.matched[newRoute.matched.length - 1]?.name as string
+        const key = newRoute.matched[newRoute.matched.length - 1]
+          ?.name as string
         selectedKey.value = [key]
       }
     }, true)
@@ -76,7 +81,9 @@ export default defineComponent({
         if (_route) {
           _route.forEach((element) => {
             // This is demo, modify nodes as needed
-            const icon = element?.meta?.icon ? () => h(compile(`<${element?.meta?.icon}/>`)) : null
+            const icon = element?.meta?.icon
+              ? () => h(compile(`<${element?.meta?.icon}/>`))
+              : null
             const r = element?.children ? (
               <a-sub-menu
                 key={element?.name}
@@ -88,7 +95,11 @@ export default defineComponent({
                 {travel(element?.children)}
               </a-sub-menu>
             ) : (
-              <a-menu-item key={element?.name} v-slots={{ icon }} onClick={() => goto(element)}>
+              <a-menu-item
+                key={element?.name}
+                v-slots={{ icon }}
+                onClick={() => goto(element)}
+              >
                 {element?.meta?.name || ''}
               </a-menu-item>
             )
@@ -101,7 +112,11 @@ export default defineComponent({
     }
 
     return () => (
-      <a-menu selected-keys={selectedKey.value} mode="inline" style="border-right: 0px">
+      <a-menu
+        selected-keys={selectedKey.value}
+        mode="inline"
+        style="border-right: 0px"
+      >
         {renderSubMenu()}
       </a-menu>
     )

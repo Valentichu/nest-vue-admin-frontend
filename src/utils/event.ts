@@ -1,5 +1,13 @@
-export function addEventListen(target: Window | HTMLElement, event: string, handler: EventListenerOrEventListenerObject, capture = false) {
-  if (target.addEventListener && typeof target.addEventListener === 'function') {
+export function addEventListen(
+  target: Window | HTMLElement,
+  event: string,
+  handler: EventListenerOrEventListenerObject,
+  capture = false
+) {
+  if (
+    target.addEventListener &&
+    typeof target.addEventListener === 'function'
+  ) {
     target.addEventListener(event, handler, capture)
   }
 }
@@ -10,7 +18,10 @@ export function removeEventListen(
   handler: EventListenerOrEventListenerObject,
   capture = false
 ) {
-  if (target.removeEventListener && typeof target.removeEventListener === 'function') {
+  if (
+    target.removeEventListener &&
+    typeof target.removeEventListener === 'function'
+  ) {
     target.removeEventListener(event, handler, capture)
   }
 }

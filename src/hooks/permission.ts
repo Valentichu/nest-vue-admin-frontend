@@ -10,7 +10,8 @@ export default function usePermission() {
         !route.meta?.requiresAuth ||
         !route.meta?.permissions ||
         route.meta?.permissions?.includes('*') ||
-        _.intersection(route.meta?.permissions, userStore.permissions).length > 0
+        _.intersection(route.meta?.permissions, userStore.permissions).length >
+          0
       )
     },
     findFirstPermissionRoute(_routers: any): any {
