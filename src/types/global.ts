@@ -24,9 +24,13 @@ export interface PostData {
 }
 
 export interface Pagination {
-  current: number
-  pageSize: number
-  total?: number
+  page: number
+  size: number
+}
+
+export interface ListData<T> {
+  list: T[]
+  total: number
 }
 
 export type TimeRanger = [string, string]

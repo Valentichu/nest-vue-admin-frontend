@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 export interface Department {
-  id?: number
-  name?: string
+  id: number
+  name: string
   parentId: number | null
-  children?: Department[] | null
+  children: Department[] | null
 }
 
 export function getDepartmentTree() {

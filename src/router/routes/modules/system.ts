@@ -10,6 +10,15 @@ export default {
   },
   children: [
     {
+      path: 'user',
+      name: 'User',
+      component: () => import('@/views/system/user/index.vue'),
+      meta: {
+        title: '用户管理',
+        requiresAuth: true,
+      },
+    },
+    {
       path: 'department',
       name: 'Department',
       component: () => import('@/views/system/department/index.vue'),

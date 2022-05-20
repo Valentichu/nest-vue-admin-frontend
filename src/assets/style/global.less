@@ -14,5 +14,27 @@ body {
     margin-top: 16px;
     height: 0;
     flex: 1;
+    overflow: auto;
+    .search-bar {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgb(229, 230, 235);
+      padding-bottom: 16px;
+      .label {
+        color: rgb(78, 89, 105);
+        font-size: 14px;
+        margin-right: 16px;
+      }
+    }
+    .operation-bar {
+      display: flex;
+      align-items: center;
+      padding: 16px 0;
+    }
+    .pagination {
+      margin-top: 16px;
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 }
