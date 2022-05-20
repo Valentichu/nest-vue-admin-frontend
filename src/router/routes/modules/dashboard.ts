@@ -16,7 +16,7 @@ export default {
       meta: {
         title: '工作区',
         requiresAuth: true,
-        permissions: ['1'],
+        permissions: ['admin'],
       },
     },
     {
@@ -26,7 +26,6 @@ export default {
       meta: {
         title: '测试1',
         requiresAuth: true,
-        permissions: ['*'],
       },
     },
   ],

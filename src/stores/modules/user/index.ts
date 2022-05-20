@@ -7,13 +7,8 @@ import { UserState } from './types'
 const useUserStore = defineStore('user', {
   state: (): UserState => ({
     name: undefined,
-    phone: undefined,
-    remark: undefined,
-    roleId: undefined,
     roleName: undefined,
     departmentId: undefined,
-    departmentName: undefined,
-    permissions: undefined,
   }),
 
   actions: {

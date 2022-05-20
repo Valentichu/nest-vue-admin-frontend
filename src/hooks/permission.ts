@@ -2,6 +2,8 @@ import { RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
 import { useUserStore } from '@/stores'
 import _ from 'lodash'
 
+import { superAdmin } from '@/config/const'
+
 export default function usePermission() {
   const userStore = useUserStore()
   return {
@@ -9,9 +11,9 @@ export default function usePermission() {
       return (
         !route.meta?.requiresAuth ||
         !route.meta?.permissions ||
+        userStore.roleName === superAdmin ||
         route.meta?.permissions?.includes('*') ||
-        _.intersection(route.meta?.permissions, userStore.permissions).length >
-          0
+        route.meta?.permissions?.includes(userStore.roleName as string)
       )
     },
     findFirstPermissionRoute(_routers: any): any {

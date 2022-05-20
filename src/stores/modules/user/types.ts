@@ -1,10 +1,7 @@
+import { roleNames } from '@/config/const'
+
 export interface UserState {
   name?: string
-  phone?: string
-  remark?: string
-  roleId?: number
-  roleName?: string
+  roleName?: roleNames
   departmentId?: number
-  departmentName?: string
-  permissions?: string[]
 }

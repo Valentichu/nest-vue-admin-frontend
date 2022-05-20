@@ -23,7 +23,7 @@ export default function setupPermissionGuard(router: Router) {
       NProgress.done()
     }
     if (isLogin()) {
-      if (userStore.permissions) {
+      if (userStore.roleName) {
         crossroads()
       } else {
         try {

@@ -1,18 +1,19 @@
 import { DirectiveBinding } from 'vue'
 import { useUserStore } from '@/stores'
 import _ from 'lodash'
+import { superAdmin } from '@/config/const'
 
 function checkPermission(el: HTMLElement, binding: DirectiveBinding) {
   const { value } = binding
   const userStore = useUserStore()
-  const { permissions } = userStore
+  const { roleName } = userStore
 
   if (Array.isArray(value)) {
     if (value.length > 0) {
       const permissionValues = value
 
       const hasPermission =
-        _.intersection(permissionValues, permissions).length > 0
+        permissionValues.includes(roleName) || roleName === superAdmin
       if (!hasPermission && el.parentNode) {
         el.parentNode.removeChild(el)
       }
