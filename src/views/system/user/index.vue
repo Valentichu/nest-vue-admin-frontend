@@ -18,25 +18,24 @@
             label: 'name',
             value: 'id',
           }"
+          @change="handleSelect"
         ></a-tree-select>
         <a-divider type="vertical" style="height: 24px"></a-divider>
         <div class="label">姓名：</div>
-        <a-input
+        <a-input-search
           v-model:value="queryParams.name"
           style="width: 300px"
           placeholder="请输入姓名搜索"
-        ></a-input>
-        <a-divider type="vertical" style="height: 24px"></a-divider>
-        <a-button type="primary" @click="handleSearch" :loading="loading"
-          >查询</a-button
-        >
+          enter-button="查询"
+          @search="handleSearch"
+        ></a-input-search>
       </div>
       <div class="operation-bar">
-        <a-button type="primary">新增</a-button>
+        <a-button type="primary" @click="handleAdd">新增</a-button>
       </div>
       <a-table
         :columns="columns"
-        :data-source="userData"
+        :data-source="renderData"
         :loading="loading"
         rowKey="id"
         :pagination="false"
@@ -65,9 +64,11 @@
     </a-card>
     <DetailModal
       v-model:visible="visible"
+      :departmentId="queryParams.departmentId"
       :currentId="currentId"
+      :departmentOptions="departmentData"
       :edit="edit"
-      @refresh="fetchUser"
+      @refresh="fetchData"
     >
     </DetailModal>
   </div>
@@ -110,7 +111,7 @@ const { loading, setLoading } = useLoading(false)
 const visible = ref(false)
 const edit = ref(false)
 const currentId = ref(-1)
-const userData = ref<User[]>([])
+const renderData = ref<User[]>([])
 const departmentData = ref<Department[]>([])
 const queryParams = reactive<QueryParams>({
   name: '',
@@ -126,17 +127,17 @@ const fetchDepartment = async () => {
   try {
     const { data } = await getDepartmentTree()
     departmentData.value = data
-    queryParams.departmentId = data[0].id
+    queryParams.departmentId = data[0].id as number
   } finally {
     setLoading(false)
   }
 }
 
-const fetchUser = async () => {
+const fetchData = async () => {
   setLoading(true)
   try {
     const { data } = await getUserList(queryParams)
-    userData.value = data.list
+    renderData.value = data.list
     total.value = data.total
   } finally {
     setLoading(false)
@@ -145,31 +146,36 @@ const fetchUser = async () => {
 
 onMounted(async () => {
   await fetchDepartment()
-  fetchUser()
+  fetchData()
 })
+
+const handleSelect = (department: number) => {
+  queryParams.name = ''
+  queryParams.departmentId = department
+  fetchData()
+}
 
 const handleSearch = (id: number) => {
   queryParams.page = 1
-  fetchUser()
+  fetchData()
 }
 
 const handlePageChange = (page: number) => {
-  queryParams.page = page + 1
-  fetchUser()
+  queryParams.page = page
+  fetchData()
 }
 
 const handleDelete = async (id: number) => {
   try {
     await deleteUser(id)
     message.success('删除成功')
-    fetchUser()
+    fetchData()
   } catch (e) {
     console.log(e)
   }
 }
 
 const handleAdd = (id: number) => {
-  currentId.value = id
   edit.value = false
   visible.value = true
 }

@@ -6,15 +6,15 @@ export interface User {
   username: string
   phone: string
   level: string
-  age: number
-  employmentDate: string
-  AppointmentDate: string
-  promotionDate: string
-  education: string
+  age: number | null
+  employmentDate: string | null
+  appointmentDate: string | null
+  promotionDate: string | null
+  education: string | null
   professionalTitle: string
-  roleName: string
-  departmentId: number
-  departmentName: string
+  roleName: string | null
+  departmentId: number | null
+  departmentName?: string
   kpi: boolean
 }
 

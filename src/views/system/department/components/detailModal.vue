@@ -5,7 +5,7 @@
     @cancel="handleCancel"
     :footer="null"
   >
-    <a-form :model="formData" @finish="handleSubmit">
+    <a-form :model="formData" @finish="handleSubmit" autocomplete="off">
       <a-form-item
         label="部门名"
         name="name"
@@ -51,7 +51,7 @@ const props = defineProps({
   },
 })
 
-const initialData = {
+const initialData: Department = {
   name: '',
   parentId: null,
 }

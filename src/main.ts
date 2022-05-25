@@ -10,7 +10,7 @@ import 'ant-design-vue/es/message/style/css'
 import 'ant-design-vue/es/modal/style/css'
 import '@/api/interceptor'
 
-import dayjs from 'dayjs'
+import * as dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 dayjs.locale('zh-cn')
 

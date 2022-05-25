@@ -8,6 +8,7 @@
       name="normal_login"
       class="login-form"
       layout="vertical"
+      autocomplete="off"
       @finish="onFinish"
     >
       <a-form-item

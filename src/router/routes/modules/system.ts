@@ -7,6 +7,7 @@ export default {
     requiresAuth: true,
     icon: 'area-chart-outlined',
     order: 0,
+    permissions: ['admin'],
   },
   children: [
     {
