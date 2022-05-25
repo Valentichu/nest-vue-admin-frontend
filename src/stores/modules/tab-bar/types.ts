@@ -7,5 +7,4 @@ export interface TagProps {
 
 export interface TabBarState {
   tagList: TagProps[]
-  cacheTabList: Set<string>
 }

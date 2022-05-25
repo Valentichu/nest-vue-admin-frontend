@@ -14,7 +14,6 @@ const formatTag = (route: RouteLocationNormalized): TagProps => {
 
 const useAppStore = defineStore('tabBar', {
   state: (): TabBarState => ({
-    cacheTabList: new Set(),
     tagList: [],
   }),
 
@@ -22,21 +21,14 @@ const useAppStore = defineStore('tabBar', {
     getTabList(): TagProps[] {
       return this.tagList
     },
-    getCacheList(): string[] {
-      return Array.from(this.cacheTabList)
-    },
   },
 
   actions: {
     updateTabList(route: RouteLocationNormalized) {
       this.tagList.push(formatTag(route))
-      if (!route.meta.ignoreCache) {
-        this.cacheTabList.add(route.name as string)
-      }
     },
     deleteTag(idx: number, tag: TagProps) {
       this.tagList.splice(idx, 1)
-      this.cacheTabList.delete(tag.name)
     },
   },
 })
